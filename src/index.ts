@@ -2,6 +2,7 @@ import "reflect-metadata";
 import express, { Express, Request, Response } from 'express';
 import { AppDataSource } from './config/database';
 import productRoutes from './routes/productRoutes';
+import orderRoutes from './routes/orderRoutes';
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -30,7 +31,7 @@ app.get('/', (req: Request, res: Response) => {
 
 
 app.use('/api/products', productRoutes);
-
+app.use('/api/orders', orderRoutes);
 
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
